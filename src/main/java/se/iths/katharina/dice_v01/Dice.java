@@ -11,7 +11,5 @@ public class Dice {
         int diceRoll = RandomGenerator.getDefault().nextInt(1, 7);
         return diceRoll;
 
-
     }
-
 }
