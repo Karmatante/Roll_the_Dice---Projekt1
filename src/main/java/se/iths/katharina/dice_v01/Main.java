@@ -4,7 +4,8 @@ public class Main {
     static void main() {
 
 
-        // -- ANSI COLOR CODING FOR FORMATTING --
+        //ANSI color coding for formatting
+
         String BOLD = "\u001B[1m";
         String RESET = "\u001B[0m";
         String BRIGHT_PURPLE = "\u001B[95m";
@@ -19,6 +20,7 @@ public class Main {
         IO.println("║             │  O    O  │             ║");
         IO.println("║             └──────────┘             ║");
         IO.println("╚══════════════════════════════════════╝" + RESET);
+        IO.println();
         IO.println();
 
         Game game1 = new Game();

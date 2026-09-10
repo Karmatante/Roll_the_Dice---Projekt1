@@ -2,6 +2,7 @@ package se.iths.katharina.dice_v01;
 
 public class Game {
 
+    //ANSI color coding for formatting
     String BOLD = "\u001B[1m";
     String RESET = "\u001B[0m";
     String GREEN = "\u001B[32m";
@@ -43,7 +44,8 @@ public class Game {
 
             Player player1 = new Player(firstName1, lastName1);
             IO.println(GREEN + BOLD + "Trevligt att träffas, " + player1.getFullName() + "! Gör dig redo för första kastet." + RESET);
-
+            IO.println();
+            IO.println();
             //Player 2 input and validation
             IO.println(BOLD + BLUE + "Välkommen, spelare 2!" + RESET);
             String firstName2 = IO.readln("Skriv in ditt förnamn: ");
@@ -73,40 +75,108 @@ public class Game {
 
             Player player2 = new Player(firstName2, lastName2);
             IO.println(GREEN + BOLD + "Trevligt att träffas, " + player2.getFullName() + "! Gör dig redo för första kastet." + RESET);
+            IO.println();
 
             //Roll the dice and update scores
+            IO.println(PURPLE + "╠════════════ SPELARE 1 ════════════╣" + RESET);
+            IO.println();
+
             int player1FirstRoll = Dice.rollDice();
             IO.println(player1.getFirstName() + ", ditt första kast ger: " + player1FirstRoll);
             player1.addToScore(player1FirstRoll);
+            IO.println();
+
+            // Short delay between dice throws
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
 
             int player1SecondRoll = Dice.rollDice();
             IO.println(player1.getFirstName() + ", ditt andra kast ger: " + player1SecondRoll);
             player1.addToScore(player1SecondRoll);
+            IO.println();
+
+            // Short delay between the next players dice rolls
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+
+            IO.println(PURPLE + "╠════════════ SPELARE 2 ════════════╣" + RESET);
+            IO.println();
 
             int player2FirstRoll = Dice.rollDice();
             IO.println(player2.getFirstName() + ", ditt första kast ger: " + player2FirstRoll);
             player2.addToScore(player2FirstRoll);
+            IO.println();
+
+            // Short delay between dice throws
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
 
             int player2SecondRoll = Dice.rollDice();
             IO.println(player2.getFirstName() + ", ditt andra kast ger: " + player2SecondRoll);
             player2.addToScore(player2SecondRoll);
+            IO.println();
+
+// Short delay before showing the final points
+            try {
+                Thread.sleep(1200);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
             //Show total scores
+            IO.println();
+            IO.println(PURPLE + "╠════════════ RESULTAT ═════════════╣" + RESET);
+            IO.println();
             IO.println(player1.getFullName() + " - din totala poäng är: " + player1.getScore());
+            IO.println();
             IO.println(player2.getFullName() + " - din totala poäng är: " + player2.getScore());
+            IO.println();
+
+            // Short delay before showing the winner
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
             //Determine the winner
+            IO.println();
+            IO.println("...och vinnaren är...");
+            IO.println();
+            // Short delay before showing the winner
+            try {
+                Thread.sleep(700);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+
             if (player1.getScore() > player2.getScore()) {
-                IO.println(BOLD + GREEN + player1.getFullName() + ", du vinner." + RESET);
+                IO.println(BOLD + GREEN + ">>>  " + player1.getFullName() + ", du vinner!  <<<" + RESET);
+                IO.println();
             } else if (player2.getScore() > player1.getScore()) {
-                IO.println(BOLD + GREEN + player2.getFullName() + ", du vinner." + RESET);
+                IO.println(BOLD + GREEN + ">>>  " + player2.getFullName() + ", du vinner!  <<<" + RESET);
+                IO.println();
             } else {
-                IO.println(BOLD + BLUE + "Det är oavgjort." + RESET);
+                IO.println(BOLD + BLUE + ">>>Det är oavgjort.<<<" + RESET);
+                IO.println();
             }
 
             boolean validAnswer = false;
             //Ask if players want another round
             do {
-
-                String answer = IO.readln(BOLD + PURPLE + "Vill du spela igen?" + RESET);
+                IO.println();
+                IO.println();
+                String answer = IO.readln(BOLD + BLUE + "Vill du spela igen?" + RESET);
                 answer = answer.toLowerCase();
 
                 switch (answer) {
